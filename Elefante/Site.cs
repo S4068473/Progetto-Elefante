@@ -58,8 +58,7 @@ namespace Elefante
                 /*Da verificare come procedere*/
                 //if (alarmClock != null)
                 //    return alarmClock.Now;
-                //return DateTime.Now;
-                return DateTime.Now;
+                return DateTime.Now;                
             }
         }
 
