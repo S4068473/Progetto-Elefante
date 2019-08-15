@@ -179,6 +179,8 @@ namespace Elefante
             ctx.Database.Initialize(true);
 
             /*Dato che non funziona il drop faccio le delete in modo che gli unit test vadano in blocco*/
+            /*La cancellazione del DB usando il Database Inizializer DropCreateDatabaseAlways non va a buon fine*/
+            /*Il drop causa errore di database in uso (Sql Server Express)*/
 
             ctx.Database.ExecuteSqlCommand("delete from dbo.Auctions");
             ctx.Database.ExecuteSqlCommand("delete from dbo.Sessions");

@@ -13,7 +13,8 @@ namespace Elefante
 {
     public class Site : ISite
     {
-        IAlarmClock alarmClock;
+        private IAlarm siteAlarm;
+        private IAlarmClock alarmClock;
         private SiteFactoryContext factoryContext;
         
         private Site()
@@ -37,7 +38,18 @@ namespace Elefante
 
             this.alarmClock = alarmClock;
 
+            if (this.alarmClock != null)
+            {
+                siteAlarm = this.alarmClock.InstantiateAlarm(300000);
+                siteAlarm.RingingEvent += SiteAlarm_RingingEvent;
+            }
+
             this.factoryContext = fc;
+        }
+
+        private void SiteAlarm_RingingEvent()
+        {
+            this.CleanupSessions();
         }
 
         [Key]
@@ -122,9 +134,8 @@ namespace Elefante
 
             //Attach è necessario perchè quando creo l'utente, il fatto che ci sia la FK al Sito cerca di creare
             //di nuovo il Sito che quindi essendoci già da errore di violazione della PK!!!
-            //factoryContext.Sites.Attach(this);
 
-            factoryContext.Configuration.ProxyCreationEnabled = false;
+            //factoryContext.Configuration.ProxyCreationEnabled = false;
 
             factoryContext.Users.Add(newUser);
             factoryContext.SaveChanges();
@@ -391,7 +402,7 @@ namespace Elefante
             //factoryContext.Users.Attach(theUser);
 
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            factoryContext.Configuration.ProxyCreationEnabled = false;
+            //factoryContext.Configuration.ProxyCreationEnabled = false;
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             factoryContext.Session.Add(newSession);

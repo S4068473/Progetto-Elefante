@@ -121,13 +121,6 @@ namespace Elefante
 
             auctionIterator.Dispose();
 
-            /*
-            Non si potrebbe evitare tutto questo semplicemente con un update globale su DB???
-            Direi di si ma dovrebbe funzionare cmq.
-            Da ripensarci.
-            *** TODO ***
-            */
-
             /*In ogni caso cancello l'utente dal db*/
             factoryContext.Database.ExecuteSqlCommand("delete from dbo.Users where Username = '" + this.Username + "'");
 

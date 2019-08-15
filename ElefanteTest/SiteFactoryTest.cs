@@ -1007,11 +1007,11 @@ namespace TAP2018_19.AuctionSite.Interfaces.Tests
             var ok = yesterday.Year == aliceAuctionEndsOn.Year && yesterday.Month == aliceAuctionEndsOn.Month &&
                      yesterday.Day == aliceAuctionEndsOn.Day;
             Assert.That(ok, "Wrong setup: current time is not day after Alice's auction ends");
-            /*Assert.That(aliceExpectedSession.ValidUntil, Is.GreaterThanOrEqualTo(alarmClockMoq.Object.Now.AddHours(1)),
+            Assert.That(aliceExpectedSession.ValidUntil, Is.GreaterThanOrEqualTo(alarmClockMoq.Object.Now.AddHours(1)),
                 "Wrong setup: Alice's session has not the expected validity");
             Assert.That(barbaraExpectedSession.ValidUntil,
                 Is.GreaterThanOrEqualTo(alarmClockMoq.Object.Now.AddMinutes(30)),
-                "Wrong setup: Barbara's session has not the expected validity");*/
+                "Wrong setup: Barbara's session has not the expected validity");
             expectedSessionList = expectedSessionList1;
         }
 
