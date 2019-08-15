@@ -63,16 +63,13 @@ namespace Elefante
 
         public string ConnectionString { get; set; }
 
-        public DateTime Now
-        {
+        public DateTime Now => DateTime.Now;
+        /*{
             get
             {
-                /*Da verificare come procedere*/
-                //if (alarmClock != null)
-                //    return alarmClock.Now;
-                return DateTime.Now;                
+                return DateTime.Now;
             }
-        }
+        }*/
 
         public override bool Equals(object objSite)
         {
