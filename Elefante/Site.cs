@@ -63,13 +63,10 @@ namespace Elefante
 
         public string ConnectionString { get; set; }
 
-        public DateTime Now => DateTime.Now;
-        /*{
-            get
-            {
-                return DateTime.Now;
-            }
-        }*/
+        public DateTime Now// => DateTime.Now;
+        {
+            get { return alarmClock != null ? alarmClock.Now : DateTime.Now; }
+        }
 
         public override bool Equals(object objSite)
         {
@@ -379,7 +376,8 @@ namespace Elefante
                     !currSession.IsSessionExpired())
                 {
                     currSession.IsSessionActive = true;
-                    currSession.ValidUntil = currSession.ValidUntil.AddSeconds(this.SessionExpirationInSeconds);
+                    //currSession.ValidUntil = currSession.ValidUntil.AddSeconds(this.SessionExpirationInSeconds);
+                    currSession.ValidUntil = Now.AddSeconds(this.SessionExpirationInSeconds);
                     SaveLogin(currSession);
                     return currSession;
                 }
