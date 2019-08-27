@@ -63,10 +63,10 @@ namespace Elefante
 
         public string ConnectionString { get; set; }
 
-        public DateTime Now// => DateTime.Now;
-        {
+        public DateTime Now => DateTime.Now;
+        /*{
             get { return alarmClock != null ? alarmClock.Now : DateTime.Now; }
-        }
+        }*/
 
         public override bool Equals(object objSite)
         {
@@ -392,7 +392,7 @@ namespace Elefante
             Session newSession = new Session(sessionId.ToString(), theUser, Now.AddSeconds(this.SessionExpirationInSeconds), true, this, factoryContext);
 
             //factoryContext.Sites.Attach(this);
-            
+
             //factoryContext.Entry(theUser).State = EntityState.Added;
             //factoryContext.Users.Attach(theUser);
 

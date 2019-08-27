@@ -27,7 +27,9 @@ namespace Elefante
 
             this.IsSessionActive = isThisSessionActive;
 
-            SessionSiteName = site.Name;
+            this.SessionSiteName = site.Name;
+
+            //this.SessionSite = site;
 
             this.factoryContext = fc;
 
